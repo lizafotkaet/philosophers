@@ -3,7 +3,7 @@ CC = cc
 OBJS_DIR = obj
 CFLAGS = -Wall -Wextra -Werror -g -pthread
 
-SRCS = main.c \
+SRCS = main.c ft_atoi.c parser.c \
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)/%.o)
 
