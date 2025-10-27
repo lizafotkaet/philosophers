@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
+/*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 21:46:18 by sergei_pilm       #+#    #+#             */
-/*   Updated: 2025/09/15 23:20:00 by sergei_pilm      ###   ########.fr       */
+/*   Updated: 2025/10/27 19:49:22 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ struct s_philo
 struct s_data
 {
 	pthread_mutex_t	fork;
-	int	num_philos;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	num_to_eat; // optional argument	
+	int				num_philos;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				num_to_eat; // optional argument	
 };
 
 
@@ -46,7 +46,8 @@ int		ft_atoi(const char *nptr, int *error);
 void	error_exit(void);
 
 // to change later
-void	*test_ft(void *);
+void	*test_ft(void *arg);
+void	*test_ft1();
 
 // threads
 void	make_philos(t_data data, t_philo *philo);

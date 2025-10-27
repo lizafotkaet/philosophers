@@ -3,7 +3,7 @@ CC = cc
 OBJS_DIR = obj
 CFLAGS = -Wall -Wextra -Werror -g -pthread
 
-SRCS = main.c ft_atoi.c parser.c \
+SRCS = main.c ft_atoi.c parser.c 
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)/%.o)
 
@@ -14,7 +14,7 @@ $(OBJS_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) -o $(NAME)
+	@$(CC) $(OBJS) -o $(NAME) -pthread
 
 clean:
 	rm -rf $(OBJS_DIR)
