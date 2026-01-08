@@ -11,50 +11,64 @@
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <string.h>
 
-void	mndtr_args(char **argv, t_data *data)
+
+t_args	parse_args(int argc, char **argv)
 {
-	int	error;
-	
-	error = 0;
-	data->num_philos = ft_atoi(argv[1], &error);
-	if (error == 1)
-		error_exit();
-	data->time_to_die = ft_atoi(argv[2], &error);
-	if (error == 1)
-		error_exit();
-	data->time_to_eat = ft_atoi(argv[3], &error);
-	if (error == 1)
-		error_exit();
-	data->time_to_sleep = ft_atoi(argv[4], &error);
-	if (error == 1)
-		error_exit();
-}
 
-void	check_args(int argc, char **argv, t_data *data)
-{
+	t_args args;
 	int	error;
-
+	memset((void*)&args,0,  sizeof(t_args));
 	error = 0;
+	if (argc < 5 || argc > 6)
+		exit_on_args_error();
+	args.num_philos = ft_atoi(argv[1], &error);
+	if (error == 1)
+		exit_on_args_error();
+	if (args.num_philos <= 0)
+		exit_on_args_error();
+	args.time_to_die = ft_atoi(argv[2], &error);
+	if (error == 1)
+		exit_on_args_error();
+	args.time_to_eat = ft_atoi(argv[3], &error);
+	if (error == 1)
+		exit_on_args_error();
+	args.time_to_sleep = ft_atoi(argv[4], &error);
 	if (argc == 5)
 	{
-		mndtr_args(argv, data);
-	}
-	else if(argc == 6)
-	{
-		mndtr_args(argv, data);
-		data->num_to_eat = ft_atoi(argv[5], &error);
 		if (error == 1)
-			error_exit();
+			exit_on_args_error();
+		return (args);
+	}
+
+	if (argc == 6)
+	{
+		args.num_to_eat = ft_atoi(argv[5], &error);
 	}
 	else
 	{
-		error_exit();
+		exit_on_args_error();
 	}
+	if (error == 1)
+		exit_on_args_error();
+
+	if (args.num_to_eat < 0)
+		exit_on_args_error();
+
+	if (args.num_philos <= 0 || args.time_to_die < 0
+		|| args.time_to_eat < 0 || args.time_to_sleep < 0)
+		exit_on_args_error();
+	return (args);
 }
 
-void	error_exit(void)
+void	error_exit(char *msg)
 {
-	printf("Invalid arguments input, try again.\n");
+	printf("%s\n", msg);
 	exit(EXIT_FAILURE);
+}
+
+void exit_on_args_error()
+{
+	error_exit("Error: Invalid arguments");
 }
