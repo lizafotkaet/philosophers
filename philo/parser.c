@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:48:51 by sergei_pilm       #+#    #+#             */
-/*   Updated: 2026/01/08 15:07:59 by ebarbash         ###   ########.fr       */
+/*   Updated: 2026/01/08 15:46:17 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_args	parse_args(int argc, char **argv)
 			exit_on_args_error();
 		return (args);
 	}
-
 	if (argc == 6)
 	{
 		args.num_to_eat = ft_atoi(argv[5], &error);

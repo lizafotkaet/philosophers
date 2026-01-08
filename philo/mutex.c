@@ -1,7 +1,6 @@
 #include "philo.h"
 #include <pthread.h>
 
-
 t_mutex	m_mutex_new()
 {
 	t_mutex	mutex;
