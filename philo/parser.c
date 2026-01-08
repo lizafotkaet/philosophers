@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
+/*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:48:51 by sergei_pilm       #+#    #+#             */
-/*   Updated: 2025/09/10 19:07:08 by sergei_pilm      ###   ########.fr       */
+/*   Updated: 2026/01/08 15:07:59 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <string.h>
 
-
 t_args	parse_args(int argc, char **argv)
 {
-
 	t_args args;
 	int	error;
+
 	memset((void*)&args,0,  sizeof(t_args));
 	error = 0;
 	if (argc < 5 || argc > 6)
@@ -68,7 +67,7 @@ void	error_exit(char *msg)
 	exit(EXIT_FAILURE);
 }
 
-void exit_on_args_error()
+void	exit_on_args_error()
 {
 	error_exit("Error: Invalid arguments");
 }
