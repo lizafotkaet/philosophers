@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 21:46:18 by sergei_pilm       #+#    #+#             */
-/*   Updated: 2026/01/08 15:41:50 by ebarbash         ###   ########.fr       */
+/*   Updated: 2026/01/08 17:02:01 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void	m_mutex_destroy(t_mutex * mutex);
 ////////////////////////////////////////////////////////////////////////////////
 
 t_table	*m_table_new(t_args *data);
+void	m_table_init_basic_mutexes(t_table *table); // new untested ft!!!
+
 void	m_table_init(t_table *table, t_args *data);
 void	m_table_free(t_table *table);
 bool	m_table_someone_died(t_table *table);
