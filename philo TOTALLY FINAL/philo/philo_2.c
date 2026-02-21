@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 15:35:36 by ebarbash          #+#    #+#             */
-/*   Updated: 2026/02/21 15:36:16 by ebarbash         ###   ########.fr       */
+/*   Updated: 2026/02/21 15:52:49 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 // до того как текущий философ успеет написать что он положил вилку
 // Чтобы избежать некорректного порядка сообщений в консоли
 // (на самом деле мьютексы захватываются в корректном порядке, но при этом
-// запись в консоль будет выглядеть как будто первый философ взял обе вилки и начал есть до того как сосед отпустил )
+// запись в консоль будет выглядеть как будто первый философ 
+// взял обе вилки и начал есть до того как сосед отпустил )
 
 void	m_philo_put_forks(t_philo *philo)
 {
@@ -35,8 +36,8 @@ void	m_philo_put_forks(t_philo *philo)
 
 bool	m_philo_sleep(t_philo *philo)
 {
-	long started_sleeping;
-	long now;
+	long	started_sleeping;
+	long	now;
 
 	if (m_philo_get_dead(philo))
 		return (true);
@@ -62,7 +63,7 @@ void	m_philo_eat(t_philo *philo)
 {
 	long	started_eating;
 	long	now;
-	
+
 	if (m_philo_get_dead(philo))
 		return ;
 	m_philo_print_eating(philo);
@@ -94,9 +95,10 @@ void	m_philo_delay_before_start(t_philo *philo)
 
 void	*m_philo_run(void *data)
 {
-	t_philo	*p = (t_philo *)data;
+	t_philo	*p;
+	bool	eat_indefinitely;
 
-	bool eat_indefinitely;
+	p = (t_philo *)data;
 	eat_indefinitely = p->table->args.num_to_eat == 0;
 	m_philo_update_last_meal(p);
 	m_philo_delay_before_start(p);
@@ -113,7 +115,7 @@ void	*m_philo_run(void *data)
 			break ;
 		m_philo_eat(p);
 		m_philo_put_forks(p);
-		if(m_philo_sleep(p))
+		if (m_philo_sleep(p))
 			break ;
 	}
 	m_philo_set_state(p, E_STATE_DEAD);
