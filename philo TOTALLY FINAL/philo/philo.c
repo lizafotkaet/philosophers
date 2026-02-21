@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 15:03:10 by ebarbash          #+#    #+#             */
-/*   Updated: 2026/02/21 15:30:18 by ebarbash         ###   ########.fr       */
+/*   Updated: 2026/02/21 15:33:27 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,21 +230,15 @@ void	*m_philo_run(void *data)
 		if (p->meals_eaten >= p->table->args.num_to_eat)
 		{
 			if (!eat_indefinitely)
-			{
 				break ;
-			}
 		}
 		m_philo_print_thinking(p);
 		if (m_philo_take_forks(p))
-		{
 			break ;
-		}
 		m_philo_eat(p);
 		m_philo_put_forks(p);
 		if(m_philo_sleep(p))
-		{
 			break ;
-		}
 	}
 	m_philo_set_state(p, E_STATE_DEAD);
 	return (NULL);
