@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 21:46:18 by sergei_pilm       #+#    #+#             */
-/*   Updated: 2026/02/21 15:48:59 by ebarbash         ###   ########.fr       */
+/*   Updated: 2026/02/21 15:58:04 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,3 +128,4 @@ long	m_philo_get_last_meal(t_philo *philo);
 void	*m_philo_run(void *data);
 bool	is_even(t_philo *philo);
 bool	m_philo_take_ordered(t_philo *philo, t_mutex *first, t_mutex *second);
+long	time_miliseconds(void);

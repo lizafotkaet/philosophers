@@ -4,7 +4,7 @@ OBJS_DIR = obj
 CFLAGS = -Wall -Wextra -Werror -g -pthread
 LDFLAGS = -pthread
 
-SRCS = main.c ft_atoi.c parser.c mutex.c philo.c  philo_output.c table.c philo_1.c philo_output_1.c philo_2.c
+SRCS = main.c ft_atoi.c parser.c mutex.c philo.c philo_output.c table.c philo_1.c philo_output_1.c philo_2.c table_1.c
 DEBUG_FLAGS = -g3 -O0
 TSAN_FLAGS = -fsanitize=thread -g3 -O1
 ASAN_FLAGS = -fsanitize=address -fsanitize=undefined -g3 -O1

@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 15:18:25 by ebarbash          #+#    #+#             */
-/*   Updated: 2026/02/21 15:26:24 by ebarbash         ###   ########.fr       */
+/*   Updated: 2026/02/21 16:01:26 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,68 +18,12 @@
 #include <stddef.h>
 #include <unistd.h>
 
-////////////////////////////////////////////////////////////////////////////////
-
 long	time_miliseconds(void)
 {
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000L) + tv.tv_usec / 1000L);
-}
-
-// Тут выделяем память потому что мы просовываем указатель на table
-// в каждого философа при создании ("каждый филосов знает за каким столом сидит")
-// и поэтому нужно чтобы память была валидна после выхода из функции.
-// Поэтому мы не можем вернуть локальную переменную.
-
-t_table	*m_table_new(t_args *args)
-{
-	t_table	*table;
-	int		i;
-	
-	table = malloc(sizeof(t_table));
-	if (!table)
-		error_exit("Memory allocation failed for table");
-	table->someone_died = false;
-	table->death_lock = m_mutex_new();
-	table->philos = malloc(sizeof(t_philo) * args->num_philos);
-	if (!table->philos)
-	{
-		free(table);
-		error_exit("Memory allocation failed for philosophers");
-	}
-	i = 0;
-	table->args = *args;
-	while (i < args->num_philos)
-	{
-		table->philos[i] = m_philo_new(table, i + 1);
-		i++;
-	}
-	table->forks = malloc(sizeof(t_mutex) * args->num_philos);
-	if (!table->forks)
-	{
-		free(table->philos);
-		free(table);
-		error_exit("Memory allocation failed for forks");
-	}
-	i = 0;
-	while (i < args->num_philos)
-	{
-		if (m_mutex_init(&table->philos[i].state_check_lock))
-		{
-			m_table_free(table);
-			error_exit("Mutex initialization failed for state_check_lock");
-		}
-		i++;
-	}
-	if (m_mutex_init(&table->death_lock))
-	{
-		m_table_free(table);
-		free(table);
-		error_exit("Mutex initialization failed for death_lock");
-	}
-	return (table);
 }
 
 void	m_table_init(t_table *table, t_args *data)
@@ -228,6 +172,8 @@ void *m_table_check_dead_philos(void *data)
 	}
 	return (NULL);
 }
+
+// some table fts that didn't fit into the big table file:
 
 bool	m_table_someone_died(t_table *table)
 {
