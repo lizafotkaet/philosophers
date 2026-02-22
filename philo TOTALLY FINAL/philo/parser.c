@@ -6,7 +6,7 @@
 /*   By: liza <liza@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:48:51 by sergei_pilm       #+#    #+#             */
-/*   Updated: 2026/02/22 12:50:30 by liza             ###   ########.fr       */
+/*   Updated: 2026/02/22 14:34:18 by liza             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static t_args	parse_optional_args(t_args args, int argc, char **argv)
 	int	error;
 
 	error = 0;
+	args.num_to_eat = 0;
 	if (argc == 5)
 		return (args);
 	if (!ft_valid_arg(argv[5]))

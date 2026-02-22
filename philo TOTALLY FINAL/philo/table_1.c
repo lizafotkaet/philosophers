@@ -6,7 +6,7 @@
 /*   By: liza <liza@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 15:57:09 by ebarbash          #+#    #+#             */
-/*   Updated: 2026/02/22 13:45:42 by liza             ###   ########.fr       */
+/*   Updated: 2026/02/22 13:59:51 by liza             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_table	*m_table_new(t_args *args)
 		error_exit("Memory allocation failed for table");
 	table->someone_died = false;
 	table->death_lock = m_mutex_new();
+	table->print_lock = m_mutex_new();
 	table->args = *args;
 	table->philos = malloc(sizeof(t_philo) * args->num_philos);
 	if (!table->philos)
