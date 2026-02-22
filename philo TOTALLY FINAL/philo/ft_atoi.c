@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
+/*   By: liza <liza@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 18:39:10 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/09/10 17:17:30 by sergei_pilm      ###   ########.fr       */
+/*   Updated: 2026/02/22 12:50:20 by liza             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_valid_arg(const char *str)
+{
+	int	i;
+
+	if (!str || !str[0])
+		return (0);
+	i = 0;
+	if (str[i] == '+')
+		i++;
+	if (!str[i])
+		return (0);
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	ft_atoi(const char *nptr, int *error)
 {

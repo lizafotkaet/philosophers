@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liza <liza@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 21:46:18 by sergei_pilm       #+#    #+#             */
-/*   Updated: 2026/02/21 15:58:04 by ebarbash         ###   ########.fr       */
+/*   Updated: 2026/02/22 12:50:22 by liza             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ struct s_table
 // parser/utils
 t_args	parse_args(int argc, char **argv);
 int		ft_atoi(const char *nptr, int *error);
+int		ft_valid_arg(const char *str);
 void	error_exit(char *msg);
 void	exit_on_args_error(void);
 long	m_table_time_miliseconds(t_table *table);
