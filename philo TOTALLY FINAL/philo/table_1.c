@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   table_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liza <liza@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 15:57:09 by ebarbash          #+#    #+#             */
-/*   Updated: 2026/02/21 15:58:42 by ebarbash         ###   ########.fr       */
+/*   Updated: 2026/02/22 13:45:42 by liza             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,28 @@ t_table	*m_table_new(t_args *args)
 	}
 	m_table_init_philos(table, args);
 	return (table);
+}
+
+// some table fts that didn't fit into the big table file:
+
+bool	m_table_someone_died(t_table *table)
+{
+	bool	died;
+
+	m_mutex_lock(&table->death_lock);
+	died = table->someone_died;
+	m_mutex_unlock(&table->death_lock);
+	return (died);
+}
+
+void	m_table_set_someone_died(t_table *table)
+{
+	m_mutex_lock(&table->death_lock);
+	table->someone_died = true;
+	m_mutex_unlock(&table->death_lock);
+}
+
+long	m_table_time_miliseconds(t_table *table)
+{
+	return (time_miliseconds() - table->start_time_ms);
 }
